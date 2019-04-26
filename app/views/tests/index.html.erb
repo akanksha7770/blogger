@@ -1,0 +1,28 @@
+<h1>Listing Tests</h1>
+<%= link_to 'New test', new_test_path, :class=> "btn btn-warning" %>
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Text</th>
+      <th scope="col">SHOW</th>
+      <th scope="col">EDIT</th>
+      <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tests.each_with_index do |test, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= test.title %></td>
+        <td><%= test.text %></td>
+        <td><%= link_to 'Show', test_path(test), :class => "btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_test_path(test), :class => "btn btn-info" %></td>
+        <td><%= link_to 'Destroy', test_path(test),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>  
+  </tbody>
+</table>
